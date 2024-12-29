@@ -1,0 +1,18 @@
+::ng-deep .custom-picklist {
+  .p-picklist-buttons {
+    padding: 0.5rem;
+
+    .p-button {
+      width: 2rem !important;
+      height: 2rem !important;
+
+      .p-button-icon {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  .p-picklist-filter-container {
+    padding: 0.5rem;
+  }
+}

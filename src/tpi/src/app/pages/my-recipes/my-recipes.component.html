@@ -1,0 +1,38 @@
+<div class="flex flex-column align-items-center min-h-screen p-4 ">
+  <div class="w-full max-w-7xl">
+    <div class="flex justify-content-between align-items-center mb-3">
+      <span class="text-2xl font-semibold">Mis Recetas</span>
+      <p-button icon="pi pi-plus" label="Nueva Receta" (click)="navigateRecipeForm()" [outlined]="true"
+        severity="contrast">
+      </p-button>
+    </div>
+
+    <p-dataView #dv [value]="recipes" [rows]="5" [paginator]="true">
+      <ng-template pTemplate="list" let-recipes>
+        <div class="grid grid-nogutter">
+          <div *ngFor="let item of recipes; let first = first" class="col-12">
+            <div class="surface-card p-4 border-round mb-3 shadow-2" (click)="navigateToRecipe(item.id)">
+              <div class="flex flex-column sm:flex-row align-items-center gap-4">
+                <div class="w-10rem h-8rem">
+                  <img [src]="item.imageUrl" [alt]="item.title" class="w-full h-full border-round"
+                    style="object-fit: cover;">
+                </div>
+                <div class="flex flex-column sm:flex-row justify-content-between align-items-center flex-1 gap-3">
+                  <span class="text-xl font-bold">{{ item.title }}</span>
+                  <div class="flex gap-2">
+                    <p-button icon="pi pi-pencil" label="Editar" styleClass="p-button-outlined"
+                      (click)="navigateToUpdate(item.id)">
+                    </p-button>
+                    <p-button icon="pi pi-trash" styleClass="p-button-outlined p-button-danger"
+                      (click)="deleteRecipe(item.id)">
+                    </p-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+</div>

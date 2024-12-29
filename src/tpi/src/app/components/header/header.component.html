@@ -1,0 +1,32 @@
+<header class="flex align-items-center justify-content-between p-3 bg-black-900 border-bottom-1 border-black-800">
+  <div class="flex align-items-center" (click)="navigateHome()">
+    <img src="assets/logo1.png" height="40" class="mr-2" alt="Logo" style="filter: brightness(0) invert(1);">
+    <span class="text-xl font-bold">Mi Recetario</span>
+  </div>
+
+  <div class="flex">
+    <p-button icon="pi pi-home" styleClass="p-button-rounded p-button-text p-button-secondary mr-3"
+      (click)="navigateHome()"></p-button>
+    <ng-container *ngIf="isAuthenticated()">
+      <p-button icon="pi pi-book" styleClass="p-button-rounded p-button-text p-button-secondary mr-3"
+        (click)="navigateToRecipes()"></p-button>
+    </ng-container>
+    <ng-container *ngIf="isAuthenticated(); else loginButton">
+      <p-avatar icon="pi pi-user" shape="circle" size="large" (click)="op.toggle($event)"></p-avatar>
+      <p-overlayPanel #op>
+        <div class="surface-card">
+          <div class="mb-3">
+            <span class="font-medium">{{ getUsername() }}</span>
+          </div>
+          <p-divider></p-divider>
+          <p-button icon="pi pi-sign-out" label="Cerrar Sesión" (click)="logout()"
+            styleClass="p-button-text p-button-danger w-full"></p-button>
+        </div>
+      </p-overlayPanel>
+    </ng-container>
+    <ng-template #loginButton>
+      <p-button icon="pi pi-sign-in" styleClass="p-button-rounded p-button-text p-button-secondary mr-3"
+        (click)="login()"></p-button>
+    </ng-template>
+  </div>
+</header>

@@ -1,0 +1,48 @@
+<div class="flex flex-column min-h-screen p-4">
+  <p-breadcrumb [model]="breadcrumbItems" [home]="homeItem" styleClass="border-none"></p-breadcrumb>
+
+  <div class="flex-1 flex justify-content-center align-items-start">
+    <div class="surface-card p-4 shadow-2 border-round" *ngIf="recipe">
+      <div class="grid">
+        <div class="col-12 md:col-6 lg:col-5">
+          <p-card>
+            <img [src]="recipe.imageUrl" [alt]="recipe.title" class="w-full border-round">
+          </p-card>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-7">
+          <div class="flex flex-column gap-4">
+            <div>
+              <h1 class="text-4xl font-bold m-0 mb-2">{{recipe.title}}</h1>
+              <p class="text-500 m-0">Creado por {{recipe.user.username}}</p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-semibold mb-3">Ingredientes</h2>
+              <ul class="list-none p-0 m-0">
+                <li *ngFor="let ingredient of recipe.ingredients" class="flex align-items-center mb-2">
+                  <i class="pi pi-circle-fill mr-2 text-sm text-cyan-800"></i>
+                  <span>{{ingredient.name}}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-semibold mb-3">Pasos</h2>
+              <ol class="m-0 list-none p-0">
+                <li *ngFor="let step of recipe.steps.split('\n'); let i = index" class="flex mb-3">
+                  <span
+                    class="flex align-items-center justify-content-center border-circle bg-cyan-800 text-white mr-3 font-semibold"
+                    style="min-width: 2rem; height: 2rem;">
+                    {{i + 1}}
+                  </span>
+                  <span class="flex-1">{{step}}</span>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

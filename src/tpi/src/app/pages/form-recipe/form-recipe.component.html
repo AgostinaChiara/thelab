@@ -1,0 +1,51 @@
+<div class="flex justify-content-center align-items-center min-h-screen p-4">
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="text-center mb-5">
+      <h2 class="text-2xl font-bold mb-4">Crea una nueva receta</h2>
+    </div>
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="flex flex-column gap-4">
+      <div>
+        <label for="title" class="block text-base font-medium mb-2">Titulo</label>
+        <input id="title" type="text" pInputText formControlName="title" class="w-full"
+          [ngClass]="{'ng-invalid ng-dirty': recipeForm.get('title')?.invalid && recipeForm.get('title')?.touched}" />
+        <small *ngIf="recipeForm.get('title')?.invalid && recipeForm.get('title')?.touched" class="p-error">
+          Titulo es requerido
+        </small>
+      </div>
+
+      <div>
+        <label for="imageUrl" class="block text-base font-medium mb-2">URL Imagen</label>
+        <input id="imageUrl" type="text" pInputText formControlName="imageUrl" class="w-full"
+          [ngClass]="{'ng-invalid ng-dirty': recipeForm.get('imageUrl')?.invalid && recipeForm.get('imageUrl')?.touched}" />
+        <small *ngIf="recipeForm.get('imageUrl')?.invalid && recipeForm.get('imageUrl')?.touched" class="p-error">
+          URL Imagen es requerido
+        </small>
+      </div>
+
+      <div>
+        <label for="ingredients" class="block text-base font-medium mb-2">Ingredientes</label>
+        <p-multiSelect id="ingredients" [options]="ingredients" formControlName="ingredients" optionLabel="name"
+          [filter]="true" placeholder="Selecciona los ingredientes"
+          [ngClass]="{'ng-invalid ng-dirty': recipeForm.get('ingredients')?.invalid && recipeForm.get('ingredients')?.touched}"></p-multiSelect>
+        <small *ngIf="recipeForm.get('ingredients')?.invalid && recipeForm.get('ingredients')?.touched" class="p-error">
+          Selecciona al menos un elemento
+        </small>
+      </div>
+
+      <div>
+        <label for="steps" class="block text-base font-medium mb-2">Pasos</label>
+        <textarea id="steps" pInputTextarea formControlName="steps" [rows]="5" class="w-full"
+          [ngClass]="{'ng-invalid ng-dirty': recipeForm.get('steps')?.invalid && recipeForm.get('steps')?.touched}"></textarea>
+        <small *ngIf="recipeForm.get('steps')?.invalid && recipeForm.get('steps')?.touched" class="p-error">
+          Pasos son requeridos
+        </small>
+      </div>
+
+      <div class="flex justify-content-end gap-2">
+        <p-button type="button" label="Cancelar" styleClass="p-button-secondary p-button-outlined"></p-button>
+        <p-button type="submit" label="Guardar Receta" [disabled]="recipeForm.invalid"></p-button>
+      </div>
+    </form>
+  </div>
+</div>
+<p-toast></p-toast>

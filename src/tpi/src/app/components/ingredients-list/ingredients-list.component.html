@@ -1,0 +1,13 @@
+<p-pickList [source]="sourceIngredients" [target]="targetIngredients" sourceHeader="Disponibles"
+  targetHeader="Seleccionados" [dragdrop]="true" [responsive]="true" [sourceStyle]="{ height: '40vh' }"
+  [targetStyle]="{ height: '40vh' }" filterBy="name" sourceFilterPlaceholder="Buscar por nombre"
+  targetFilterPlaceholder="Buscar por nombre" breakpoint="1400px" (onMoveToTarget)="onTargetChange($event)"
+  (onMoveToSource)="onTargetChange($event)" styleClass="custom-picklist">
+  <ng-template let-ingredient pTemplate="item">
+    <div class="flex flex-wrap p-2 align-items-center gap-3">
+      <div class="flex-1 flex flex-column gap-2">
+        <span class="font-bold">{{ ingredient.name }}</span>
+      </div>
+    </div>
+  </ng-template>
+</p-pickList>

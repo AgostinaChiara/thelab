@@ -1,0 +1,46 @@
+<div class="flex justify-content-center align-items-center min-h-screen p-4">
+  <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div class="text-center mb-5">
+      <img src="assets/logo2.png" alt="Image" height="50" class="mb-1" style="filter: brightness(0) invert(1);">
+      <div class="text-900 text-3xl font-medium mb-3">Crea tu nueva cuenta</div>
+      <span class="text-600 font-medium line-height-3">Ya tienes cuenta?</span>
+      <a class="font-medium no-underline ml-2 text-cyan-600 cursor-pointer" routerLink="/login">Inicia Sesion!</a>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="username" class="block text-900 font-medium mb-2">Username</label>
+        <input id="username" type="text" placeholder="Username" pInputText class="w-full mb-0"
+          formControlName="username">
+        <small class="p-error block mt-1"
+          *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+          Username es requerido
+        </small>
+
+        <label for="password" class="block text-900 font-medium mb-2 mt-4">Contraseña</label>
+        <input id="password" type="password" placeholder="Contraseña" pInputText class="w-full mb-0"
+          formControlName="password">
+        <small class="p-error block mt-1"
+          *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          <ng-container *ngIf="registerForm.get('password')?.errors?.required">La contraseña es requerida</ng-container>
+          <ng-container *ngIf="registerForm.get('password')?.errors?.minlength">La contraseña debe tener al menos 6
+            caracteres</ng-container>
+        </small>
+
+        <label for="confirmPassword" class="block text-900 font-medium mb-2 mt-4">Repite la contraseña</label>
+        <input id="confirmPassword" type="password" placeholder="Repite la contraseña" pInputText class="w-full"
+          formControlName="confirmPassword">
+        <small class="p-error block mt-1"
+          *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+          <ng-container *ngIf="registerForm.get('confirmPassword')?.errors?.required">Repetir la contraseña es
+            requerido</ng-container>
+          <ng-container *ngIf="registerForm.get('confirmPassword')?.errors?.passwordMismatch">Las contraseñas no
+            coinciden</ng-container>
+        </small>
+
+        <button pButton pRipple label="Registrar" icon="pi pi-user" class="w-full cyan-button mt-6"
+          type="submit"></button>
+      </div>
+    </form>
+  </div>
+</div>
+<p-toast></p-toast>
