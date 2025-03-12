@@ -26,13 +26,13 @@ This app is designed for people who struggle with meal ideas or want to reduce f
 
 ## Screenshots
 ### Home Page  
-![Home Page]([images/home.png](https://github.com/user-attachments/assets/073975d4-f54b-4b16-96da-b55a591909f4))  
+![Home Page](https://github.com/user-attachments/assets/073975d4-f54b-4b16-96da-b55a591909f4)
 
 ### Recipe Detail  
 ![Recipe Detail](https://github.com/user-attachments/assets/55ecd61d-7929-4921-a3a6-be36fee5193b)
 
 ### Create Recipe
-![Create Recipe](https://github.com/user-attachments/assets/1163544d-a39d-4378-b24d-4d986c455f3a)
+![Create Recipe](https://github.com/user-attachments/assets/b4f0e3ca-47ac-4f17-8b20-4cb676f576f7)
 
 ### Grid Recipes
 ![Grid Recipes](https://github.com/user-attachments/assets/94b0fb04-0a6b-4e88-b0cc-ada9e6e58440)
